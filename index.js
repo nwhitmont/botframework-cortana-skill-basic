@@ -16,6 +16,11 @@ var connector = new builder.ChatConnector({
 // Listen for messages from users
 server.post('/api/messages', connector.listen());
 
+// status route
+server.get('/', function (request, response, next) {
+    response.send(200, 'online');
+});
+
 // Create bot with root dialog
 var bot = new builder.UniversalBot(connector, (session) => {
 
